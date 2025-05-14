@@ -79,11 +79,14 @@ class _CameraPageState extends State<CameraPage> {
     setState(() => _flashMode = next);
   }
 
-  void _setZoom(double value) async {
-    if (!_isZoomSupported) return;
-    await _controller!.setZoomLevel(_zoomLevel);
-    setState(() {});
-  }
+void _setZoom(double value) async {
+  if (!_isZoomSupported) return;
+  await _controller?.setZoomLevel(value);
+  setState(() {
+    _zoomLevel = value;
+  });
+}
+
 
   void _handleTrap(TapDownDetails details, BoxConstraints constraints) {
     final offset = Offset(
